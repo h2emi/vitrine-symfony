@@ -1,25 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Bienvenue sur ma homepage</h1>
 
-<h3>Table de mes technos</h3>
-<div class="row">
+	{# présentation #}
+	<div class=" row justify-content-center align-content-center" style="height:35vh;">
+		<div class="">
 
-    {% for techno in technos %}
-      <div class="card" style="width: 18rem;">
-        <img src="{{ techno.image }}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-text">{{ techno.name }}</p>
-        </div>
-      </div>
+			<div class="">
+				<h2 style:"">Emilie</h2>
+				<p>Apprentie dev web
+				</p>
+			</div>
+
+			<div class="">
+				<p class="btn btn-success">En savoir plus</p>
+				<p class="btn btn-success">Voir mes projets</p>
+			</div>
+
+		</div>
+
+	</div>
 
 
-    {% endfor %}
-    
-</div>
+	{#  A propos #}
+	<div class="container">
+		{{ form(technoForm) }}
 
-
-{% endblock %}
-
-
+		</div>
+	{% endblock %}
