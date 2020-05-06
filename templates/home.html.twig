@@ -24,7 +24,18 @@
 
 	{#  A propos #}
 	<div class="container">
+		<h3>Formulaire d'ajout de techno (php, js...)</h3>
 		{{ form(technoForm) }}
 
-		</div>
-	{% endblock %}
+			<h3>Formulaire d'ajout de skill (angular, symfony...)</h3>
+			{{ form(skillForm) }}
+
+				<h3>Formulaire d'ajout d'une catégorie</h3>
+				{{ form(categoryForm) }}
+
+					<h3>Formulaire d'ajout d'un projet</h3>
+					{{ form(projectForm) }}
+
+
+					</div>
+				{% endblock %}

@@ -2,18 +2,16 @@
 
 namespace App\Form;
 
-use App\Entity\Skill;
-use App\Entity\Techno;
 use App\Entity\Project;
+use App\Entity\Skill;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SkillType extends AbstractType
+class ProjectType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -21,18 +19,14 @@ class SkillType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('image')
-
-            ->add('projects', EntityType::class, ['class' => Project::class, 'choice_label' => 'name'])
-            ->add('techno', EntityType::class, ['class' => Techno::class, 'choice_label' => 'name'])
-
-            ->add('save', SubmitType::class);
+            ->add('skills', EntityType::class, ['class' => Skill::class, 'choice_label' => 'name'])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Skill::class,
+            'data_class' => Project::class,
         ]);
     }
 }
