@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,10 +16,9 @@ use App\Entity\Category;
 use App\Repository\ProjectRepository;
 use App\Entity\Project;
 
-class DefaultController extends AbstractController
+class AdminController extends AbstractController
 {
-    public function indexAction(Request $request, TechnoRepository $technoRepository, SkillRepository $skillRepository)
-    {
+    public function adminAction(Request $request, TechnoRepository $technoRepository, SkillRepository $skillRepository) {
         $technos = $technoRepository->findAll();
         //on déclare une nouvelle techno (vide)
         $techno = new Techno();
@@ -77,7 +75,7 @@ class DefaultController extends AbstractController
         }
 
         
-        return $this->render('./pages/public/home.html.twig', [
+        return $this->render('./pages/admin/dashboard.html.twig', [
             "technos" => $technos, 
             "skills" => $skills, 
             "technoForm"=>$technoForm->createView(), 
@@ -85,9 +83,14 @@ class DefaultController extends AbstractController
             "categoryForm"=>$categoryForm->createView(), 
             "projectForm"=>$projectForm->createView()
         ]);
-    }
 
-    public function aboutAction(){
-        return $this->render('./pages/public/about.html.twig');
     }
 }
+
+
+
+
+
+   
+        
+    

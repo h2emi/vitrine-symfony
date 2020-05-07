@@ -17,15 +17,23 @@
 
     <body>
         <div class="container-fluid"> 
-            {% include 'components/navbar.html.twig' %}
+            <div class="vh-100 w-100 d-flex ">
 
+                <!-- side bar -->
+                <div class="col-2 text-light" style="background-color:#395C6B;">
+                    {% include 'pages/admin/components/sidebar.html.twig' %} 
+                </div>
 
-                {% block body %}{% endblock %}
+                <!-- content part -->
+                <div class="col-10 " style="background-color: #FCF8F4;">
+                    {% block body %} {% endblock %}
+                </div>
+
+            </div>
+
                     
                 {% block javascripts %}{% endblock %}
                 
         </div>
-
-
     </body>
 </html>

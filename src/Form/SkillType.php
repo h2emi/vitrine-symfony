@@ -22,7 +22,7 @@ class SkillType extends AbstractType
             ->add('description')
             ->add('image')
 
-            ->add('projects', EntityType::class, ['class' => Project::class, 'choice_label' => 'name'])
+            ->add('projects', EntityType::class, ['class' => Project::class, 'multiple'=>true, 'expanded'=>true, 'choice_label' => 'name'])
             ->add('techno', EntityType::class, ['class' => Techno::class, 'choice_label' => 'name'])
 
             ->add('save', SubmitType::class);

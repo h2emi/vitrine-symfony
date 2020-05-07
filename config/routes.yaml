@@ -1,3 +1,16 @@
 home:
     path: /
     controller: App\Controller\DefaultController::indexAction
+
+about:
+    path: /about
+    controller: App\Controller\DefaultController::aboutAction
+
+admin:
+    path: /admin
+    controller: App\Controller\AdminController::adminAction
+    
+
+skill_update:
+    path: /skill/{id}/update
+    controller: App\Controller\SkillController::skillUpdateAction
