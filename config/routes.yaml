@@ -11,6 +11,10 @@ admin:
     controller: App\Controller\AdminController::adminAction
     
 
+skills:
+    path : /admin/skill
+    controller: App\Controller\AdminController::skillAction
+
 skill_update:
-    path: /skill/{id}/update
-    controller: App\Controller\SkillController::skillUpdateAction
+    path: admin/skill_update
+    controller: App\Controller\AdminController::skillUpdateAction

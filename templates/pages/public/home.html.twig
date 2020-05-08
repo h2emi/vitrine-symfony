@@ -40,7 +40,8 @@
 		{{ form_end(technoForm) }}
 	</div>
 
-	<h3>Liste des skills</h3> <ul>
+	<h3>Liste des skills</h3>
+	<ul>
         {% for skill in skills %}
             <li>
                 <a href="{{ path('skill_update', {"id" : skill.id}) }}">{{ skill.name }}</a>

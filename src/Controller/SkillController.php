@@ -29,7 +29,7 @@ class SkillController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('skill_update.html.twig', ["skillForm"=>$skillForm->createView()]);
+        return $this->render('pages/admin/skill_update.html.twig', ["skillForm"=>$skillForm->createView()]);
 
     }
 }

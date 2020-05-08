@@ -1,0 +1,15 @@
+{% extends 'pages/admin/admin_base.html.twig' %}
+
+{% block body %}
+    <h1>Mes skills</h1>
+    <ul>
+        {% for skill in skills %}
+            <li>
+                <a href="{{ path('skill_update', {"id" : skill.id}) }}">{{ skill.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock %}
