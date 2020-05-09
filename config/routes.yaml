@@ -15,6 +15,20 @@ skills:
     path : /admin/skill
     controller: App\Controller\AdminController::skillAction
 
+skill_add:
+    path: /admin/skill/add
+    controller: App\Controller\AdminController::skillAddAction
+
 skill_update:
-    path: admin/skill_update
+    path: /admin/skill/{id}/update
     controller: App\Controller\AdminController::skillUpdateAction
+
+projects:
+    path: /admin/project
+    controller: App\Controller\AdminController::projectAction
+
+project_update:
+    path: /admin/project/{id}/update
+    controller: App\Controller\AdminController::projectUpdateAction
+
+

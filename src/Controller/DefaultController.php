@@ -22,6 +22,7 @@ class DefaultController extends AbstractController
     public function indexAction(Request $request, TechnoRepository $technoRepository, SkillRepository $skillRepository)
     {
         $technos = $technoRepository->findAll();
+
         //on déclare une nouvelle techno (vide)
         $techno = new Techno();
         //un créé un nouveau formulaire basé sur une entity (dans ce cas : techno)
@@ -57,7 +58,7 @@ class DefaultController extends AbstractController
         $category = new Category();
         $categoryForm = $this->createForm('App\Form\CategoryType', $category);
         $categoryForm->handleRequest($request);
-        
+
         if ($categoryForm->isSubmitted()) {
             $category = $categoryForm->getData();
             $manager = $this->getDoctrine()->getManager();

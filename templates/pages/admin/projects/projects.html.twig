@@ -1,0 +1,35 @@
+{% extends 'pages/admin/admin_base.html.twig' %}
+
+{% block body %}
+    <h1>Mes projets</h1>
+    <a href="">Ajouter</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col"></th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <th>{{ project.id }}</th>
+                <td>{{ project.name }}</td>
+                <td>{{ project.description }}</td>
+                <td> <img src="{{ project.image }}" style="width: 100px; object-fit: cover;"></td>
+                <td><a href="{{ path('project_update', {"id" : project.id}) }}">Modifier</a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
