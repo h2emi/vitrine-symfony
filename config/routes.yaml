@@ -12,7 +12,7 @@ admin:
     
 
 skills:
-    path : /admin/skill
+    path : /admin/skills
     controller: App\Controller\AdminController::skillAction
 
 skill_add:
@@ -24,11 +24,38 @@ skill_update:
     controller: App\Controller\AdminController::skillUpdateAction
 
 projects:
-    path: /admin/project
+    path: /admin/projects
     controller: App\Controller\AdminController::projectAction
+
+project_add:
+    path: /admin/project/add
+    controller: App\Controller\AdminController::projectAddAction
 
 project_update:
     path: /admin/project/{id}/update
     controller: App\Controller\AdminController::projectUpdateAction
 
+technos:
+    path: /admin/technos
+    controller: App\Controller\AdminController::technoAction
+
+techno_add:
+    path: /admin/techno/add
+    controller: App\Controller\AdminController::technoAddAction
+
+techno_update:
+    path: /admin/techno/{id}/update
+    controller: App\Controller\AdminController::technoUpdateAction
+
+categories:
+    path: /admin/categories
+    controller: App\Controller\AdminController::categoryAction
+
+category_add:
+    path: /admin/category/add
+    controller: App\Controller\AdminController::categoryAddAction
+
+category_update:
+    path: /admin/category/{id}/update
+    controller: App\Controller\AdminController::categoryUpdateAction
 

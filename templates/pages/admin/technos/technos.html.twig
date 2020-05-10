@@ -1,0 +1,41 @@
+{% extends 'pages/admin/admin_base.html.twig' %}
+
+{% block body %}
+
+    <h1>Mes technos</h1>
+    <a href="{{ path('techno_add') }}">Ajouter</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Categorie</th>
+            <th scope="col">Image</th>
+
+            <th scope="col"></th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for techno in technos %}
+            <tr>
+                <th>{{ techno.id }}</th>
+                <td>{{ techno.name }}</td>
+                <td>{{ techno.category.name }}</td>
+
+                <td> <img src="{{ techno.image }}" style="width: 100px; object-fit: cover;"></td>
+                <td><a href="{{ path('techno_update', {"id" : techno.id}) }}">Modifier</a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+
+{% endblock %}

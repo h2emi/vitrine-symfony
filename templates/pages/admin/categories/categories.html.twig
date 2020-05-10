@@ -1,0 +1,37 @@
+{% extends 'pages/admin/admin_base.html.twig' %}
+
+{% block body %}
+
+    <h1>Mes categories</h1>
+    <a href="{{ path('category_add') }}">Ajouter</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nom</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <th>{{ category.id }}</th>
+                <td>{{ category.name }}</td>
+                <td><a href="{{ path('category_update', {"id" : category.id}) }}">Modifier</a></td>
+                <td><a href="">Supprimer</a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+
+{% endblock %}

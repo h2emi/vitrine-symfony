@@ -19,7 +19,8 @@ class ProjectType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('image')
-            ->add('skills', EntityType::class, ['class' => Skill::class, 'choice_label' => 'name'])
+            ->add('skills', EntityType::class, ['class' => Skill::class, 'multiple'=>true, 'expanded'=>true, 'choice_label' => 'name'])
+            ->add('save', SubmitType::class);
         ;
     }
 

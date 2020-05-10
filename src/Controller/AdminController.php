@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Entity\Project;
+use App\Entity\Techno;
 use App\Form\SkillType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProjectRepository;
+use App\Repository\TechnoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,6 +52,25 @@ class AdminController extends AbstractController
 
     }
 
+    public function projectAddAction(Request $request)
+    {
+        $project = new Project();
+        $projectForm = $this->createForm('App\Form\ProjectType', $project);
+        $projectForm->handleRequest($request);
+
+        if ($projectForm->isSubmitted()) {
+            $project = $projectForm->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($project);
+            $manager->flush();
+            return $this->redirectToRoute('projects');
+        }
+
+        return $this->render('pages/admin/projects/project_add.html.twig', [
+            "projectForm"=>$projectForm->createView(),
+        ]);
+    }
+
 
 
     public function skillAction(SkillRepository $skillRepository){
@@ -77,8 +101,8 @@ class AdminController extends AbstractController
         ]);
     }
 
-
-    public function skillUpdateAction(Request $request, $id, SkillRepository $skillRepository){
+    public function skillUpdateAction(Request $request, $id, SkillRepository $skillRepository)
+    {
 
         // création du formulaire avec les valeurs de la skill ciblée
         $skill = $skillRepository->find($id);
@@ -102,8 +126,106 @@ class AdminController extends AbstractController
         return $this->render('pages/admin/skills/skill_update.html.twig', [
             "skillForm"=>$skillForm->createView()
         ]);
-
     }
+
+
+
+    public function technoAction(technoRepository $technoRepository){
+
+            $technos = $technoRepository->findAll();
+
+            return $this->render('pages/admin/technos/technos.html.twig', [
+                "technos" => $technos,
+            ]);
+        }
+
+    public function technoAddAction(Request $request)
+    {
+        $techno = new Techno();
+        $technoForm = $this->createForm('App\Form\TechnoType', $techno);
+        $technoForm->handleRequest($request);
+
+        if ($technoForm->isSubmitted()) {
+            $techno = $technoForm->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($techno);
+            $manager->flush();
+            return $this->redirectToRoute('technos');
+        }
+
+        return $this->render('pages/admin/technos/techno_add.html.twig', [
+            "technoForm"=>$technoForm->createView(),
+        ]);
+    }
+
+    public function technoUpdateAction(Request $request, $id, TechnoRepository $technoRepository)
+    {
+        $techno = $technoRepository->find($id);
+        $technoForm = $this->createForm('App\Form\TechnoType',$techno);
+
+        $technoForm->handleRequest($request);
+        if($technoForm->isSubmitted()){
+            $techno = $technoForm->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($techno);
+            $manager->flush();
+            return $this->redirectToRoute('technos');
+        }
+
+        return $this->render('pages/admin/technos/techno_update.html.twig', [
+            "technoForm"=>$technoForm->createView()
+        ]);
+    }
+
+
+
+    public function categoryAction(categoryRepository $categoryRepository){
+
+        $categories = $categoryRepository->findAll();
+
+        return $this->render('pages/admin/categories/categories.html.twig', [
+            "categories" => $categories,
+        ]);
+    }
+
+    public function categoryAddAction(Request $request)
+    {
+        $category = new Category();
+        $categoryForm = $this->createForm('App\Form\CategoryType', $category);
+        $categoryForm->handleRequest($request);
+
+        if ($categoryForm->isSubmitted()) {
+            $category = $categoryForm->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($category);
+            $manager->flush();
+            return $this->redirectToRoute('categories');
+        }
+
+        return $this->render('pages/admin/categories/category_add.html.twig', [
+            "categoryForm"=>$categoryForm->createView(),
+        ]);
+    }
+
+    public function categoryUpdateAction(Request $request, $id, CategoryRepository $categoryRepository)
+    {
+        $category = $categoryRepository->find($id);
+        $categoryForm = $this->createForm('App\Form\CategoryType',$category);
+
+        $categoryForm->handleRequest($request);
+        if($categoryForm->isSubmitted()){
+            $category = $categoryForm->getData();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($category);
+            $manager->flush();
+            return $this->redirectToRoute('categories');
+        }
+
+        return $this->render('pages/admin/categories/category_update.html.twig', [
+            "categoryForm"=>$categoryForm->createView()
+        ]);
+    }
+
 
 }
 
