@@ -6,6 +6,7 @@ use App\Entity\Skill;
 use App\Entity\Techno;
 use App\Entity\Project;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
@@ -20,7 +21,7 @@ class SkillType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('image')
+            ->add('image' , FileType::class, ['mapped'=>false, 'required'=>false])
 
             ->add('projects', EntityType::class, ['class' => Project::class, 'multiple'=>true, 'expanded'=>true, 'choice_label' => 'name'])
             ->add('techno', EntityType::class, ['class' => Techno::class, 'choice_label' => 'name'])

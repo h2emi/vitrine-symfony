@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Playfair+Display&display=swap');
+
+.test{
+    color : red;
+}
+
+.titleName{
+    color : darkslategrey;
+    font-family: 'Playfair Display', serif;
+    font-size: 11rem;
+}
+
+#machine{
+    font-size: 2rem;
+}
+

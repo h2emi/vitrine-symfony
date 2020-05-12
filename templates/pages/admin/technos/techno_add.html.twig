@@ -2,7 +2,23 @@
 
 {% block body %}
     <h1>Ajouter une techno</h1>
-    {{ form(technoForm) }}
+
+    <div style="background-color : #F4F1BB;">
+
+        {{ form_start(technoForm , {'attr': {'class': 'p-4'}}) }}
+        <h3>Ajouter une techno (php, js...)</h3>
+
+        {{ form_label(technoForm.name,null, {'label_attr': {'style' : 'font-style: italic'} }) }}
+        <p>{{ form_widget(technoForm.name, {'attr': {'placeholder': 'Nom'}}) }}</p>
+
+        {{ form_label(technoForm.category,null, {'label_attr': {'style' : 'font-style: italic'} }) }}
+        <p>{{ form_widget(technoForm.category, {'attr': {'placeholder': ''}}) }}</p>
+
+        {{ form_label(technoForm.image,null, {'label_attr': {'style' : 'font-style: italic'} }) }}
+        <p>{{ form_widget(technoForm.image, {'attr': {'placeholder': 'Image'}}) }}</p>
+
+        {{ form_end(technoForm) }}
+    </div>
 {% endblock %}
 
 

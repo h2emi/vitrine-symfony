@@ -3,7 +3,8 @@
 {% block body %}
 
     <h1>Mes categories</h1>
-    <a href="{{ path('category_add') }}">Ajouter</a>
+    <p><a class="btn btn-primary" href="{{ path('category_add') }}">Ajouter</a></p>
+
 
     <table class="table">
         <thead class="thead-dark">
@@ -11,7 +12,7 @@
             <th scope="col">id</th>
             <th scope="col">Nom</th>
             <th scope="col"></th>
-            <th scope="col"></th>
+
 
 
         </tr>
@@ -21,8 +22,9 @@
             <tr>
                 <th>{{ category.id }}</th>
                 <td>{{ category.name }}</td>
-                <td><a href="{{ path('category_update', {"id" : category.id}) }}">Modifier</a></td>
-                <td><a href="">Supprimer</a></td>
+                <td><a class="btn btn-primary" href="{{ path('category_update', {"id" : category.id}) }}">Modifier</a> <a class="btn btn-primary" href="{{ path('category_delete', {"id" : category.id}) }}">Supprimer</a></td>
+
+
 
             </tr>
         {% endfor %}

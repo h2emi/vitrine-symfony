@@ -3,7 +3,8 @@
 {% block body %}
 
     <h1>Mes technos</h1>
-    <a href="{{ path('techno_add') }}">Ajouter</a>
+    <p><a class="btn btn-primary" href="{{ path('techno_add') }}">Ajouter</a></p>
+
 
     <table class="table">
         <thead class="thead-dark">
@@ -14,6 +15,7 @@
             <th scope="col">Image</th>
 
             <th scope="col"></th>
+            <
 
 
         </tr>
@@ -24,9 +26,9 @@
                 <th>{{ techno.id }}</th>
                 <td>{{ techno.name }}</td>
                 <td>{{ techno.category.name }}</td>
+                <td> <img src="{{ asset('uploads/images/'~techno.image) }}" style="width: 100px; object-fit: cover;"></td>
 
-                <td> <img src="{{ techno.image }}" style="width: 100px; object-fit: cover;"></td>
-                <td><a href="{{ path('techno_update', {"id" : techno.id}) }}">Modifier</a></td>
+                <td><a class="btn btn-primary" href="{{ path('techno_update', {"id" : techno.id}) }}">Modifier</a> <a class="btn btn-primary" href="{{ path('techno_delete', {"id" : techno.id}) }}">Supprimer</a></td>
 
             </tr>
         {% endfor %}

@@ -2,7 +2,8 @@
 
 {% block body %}
     <h1>Mes projets</h1>
-    <a  href="{{ path('project_add') }}">Ajouter</a>
+    <p><a class="btn btn-primary" href="{{ path('project_add') }}">Ajouter</a></p>
+
 
     <table class="table">
         <thead class="thead-dark">
@@ -11,7 +12,10 @@
             <th scope="col">Nom</th>
             <th scope="col">Description</th>
             <th scope="col">Image</th>
+
             <th scope="col"></th>
+            <th scope="col"></th>
+
 
 
         </tr>
@@ -22,9 +26,10 @@
                 <th>{{ project.id }}</th>
                 <td>{{ project.name }}</td>
                 <td>{{ project.description }}</td>
-                <td> <img src="{{ project.image }}" style="width: 100px; object-fit: cover;"></td>
-                <td><a href="{{ path('project_update', {"id" : project.id}) }}">Modifier</a></td>
 
+                <td> <img src="{{ asset('uploads/images/'~project.image) }}" style="width: 100px; object-fit: cover;"></td>
+                <td><a class="btn btn-primary" href="{{ path('project_update', {"id" : project.id}) }}">Modifier</a></td>
+                <td> <a class="btn btn-primary" href="{{ path('project_delete', {"id" : project.id}) }}">Supprimer</a></td>
             </tr>
         {% endfor %}
         </tbody>

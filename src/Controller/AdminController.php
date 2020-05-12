@@ -22,6 +22,7 @@ class AdminController extends AbstractController
         return $this->render('pages/admin/dashboard.html.twig');
     }
 
+
     public function projectAction(ProjectRepository $projectRepository)
     {
         $projects = $projectRepository->findAll();
@@ -60,15 +61,34 @@ class AdminController extends AbstractController
 
         if ($projectForm->isSubmitted()) {
             $project = $projectForm->getData();
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($project);
-            $manager->flush();
-            return $this->redirectToRoute('projects');
+            $file = $projectForm-> get('image')->getData();
+            if($file){
+                $newFilename = uniqid().'.'.$file->guessExtension();
+                $file->move(
+
+                    $this->getParameter('uploads'), // routes->services.yaml
+                    $newFilename
+                );
+                $project->setImage($newFilename);
+
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($project);
+                $manager->flush();
+                return $this->redirectToRoute('projects');
+            }
         }
 
         return $this->render('pages/admin/projects/project_add.html.twig', [
             "projectForm"=>$projectForm->createView(),
         ]);
+    }
+
+    public function projectDeleteAction(Request $request, $id , ProjectRepository $projectRepository) {
+        $project = $projectRepository->find($id);
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($project);
+        $manager->flush();
+        return $this->redirectToRoute('projects');
     }
 
 
@@ -90,15 +110,38 @@ class AdminController extends AbstractController
 
         if ($skillForm->isSubmitted()) {
             $skill = $skillForm->getData();
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($skill);
-            $manager->flush();
-            return $this->redirectToRoute('skills');
+            $file = $skillForm-> get('image')->getData();
+            if($file){
+                $newFilename = uniqid().'.'.$file->guessExtension();
+                $file->move(
+
+                    $this->getParameter('uploads'), // routes->services.yaml
+                    $newFilename
+                );
+                $skill->setImage($newFilename);
+
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($skill);
+                $manager->flush();
+                return $this->redirectToRoute('skills');
+
+            }
+
+
+
         }
 
         return $this->render('pages/admin/skills/skill_add.html.twig', [
             "skillForm"=>$skillForm->createView(),
         ]);
+    }
+
+    public function skillDeleteAction(Request $request, $id , SkillRepository $skillRepository) {
+        $skill = $skillRepository->find($id);
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($skill);
+        $manager->flush();
+        return $this->redirectToRoute('skills');
     }
 
     public function skillUpdateAction(Request $request, $id, SkillRepository $skillRepository)
@@ -147,10 +190,25 @@ class AdminController extends AbstractController
 
         if ($technoForm->isSubmitted()) {
             $techno = $technoForm->getData();
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($techno);
-            $manager->flush();
-            return $this->redirectToRoute('technos');
+            $file = $technoForm-> get('image')->getData();
+            if($file){
+                $newFilename = uniqid().'.'.$file->guessExtension();
+                $file->move(
+
+                    $this->getParameter('uploads'), // routes->services.yaml
+                    $newFilename
+                );
+                $techno->setImage($newFilename);
+
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($techno);
+                $manager->flush();
+                return $this->redirectToRoute('technos');
+
+            }
+
+
+
         }
 
         return $this->render('pages/admin/technos/techno_add.html.twig', [
@@ -175,6 +233,14 @@ class AdminController extends AbstractController
         return $this->render('pages/admin/technos/techno_update.html.twig', [
             "technoForm"=>$technoForm->createView()
         ]);
+    }
+
+    public function technoDeleteAction(Request $request, $id , TechnoRepository $technoRepository) {
+        $techno = $technoRepository->find($id);
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($techno);
+        $manager->flush();
+        return $this->redirectToRoute('technos');
     }
 
 
@@ -225,6 +291,16 @@ class AdminController extends AbstractController
             "categoryForm"=>$categoryForm->createView()
         ]);
     }
+
+    public function categoryDeleteAction(Request $request, $id , CategoryRepository $categoryRepository) {
+        $category = $categoryRepository->find($id);
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($category);
+        $manager->flush();
+        return $this->redirectToRoute('categories');
+    }
+
+
 
 
 }

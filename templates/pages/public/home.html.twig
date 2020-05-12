@@ -3,13 +3,12 @@
 {% block body %}
 
 	{# présentation #}
-	<div class=" row justify-content-center align-content-center" style="height:35vh;">
+	<div class=" row justify-content-center align-content-center" style="height:45vh;">
 		<div class="">
 
 			<div class="">
-				<h2 style:"">Emilie</h2>
-				<p>Apprentie dev web
-				</p>
+				<p class="titleName">Emilie</p>
+				<p id="machine"></p>
 			</div>
 
 			<div class="">
@@ -22,48 +21,6 @@
 	</div>
 
 
-	{#  A propos #}
-	<div style="background-color : #F4F1BB;">
-
-		{{ form_start(technoForm , {'attr': {'class': 'p-4'}}) }}
-		<h3>Ajouter une techno (php, js...)</h3>
-
-		{{ form_label(technoForm.name,null, {'label_attr': {'style' : 'font-style: italic'} }) }}
-		<p>{{ form_widget(technoForm.name, {'attr': {'placeholder': 'Nom'}}) }}</p>
-
-		{{ form_label(technoForm.category,null, {'label_attr': {'style' : 'font-style: italic'} }) }}
-		<p>{{ form_widget(technoForm.category, {'attr': {'placeholder': ''}}) }}</p>
-
-		{{ form_label(technoForm.image,null, {'label_attr': {'style' : 'font-style: italic'} }) }}
-		<p>{{ form_widget(technoForm.image, {'attr': {'placeholder': 'Image'}}) }}</p>
-
-		{{ form_end(technoForm) }}
-	</div>
-
-	<h3>Liste des skills</h3>
-	<ul>
-        {% for skill in skills %}
-            <li>
-                <a href="{{ path('skill_update', {"id" : skill.id}) }}">{{ skill.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-				
 
 
-
-
-
-			{#{{ form(skillForm) }}
-			
-
-			
-			   {{ form(categoryForm) }}
-
-	
-			{{ form(projectForm) }}   #}
-
-
-		
-	
-			{% endblock %}
+{% endblock %}

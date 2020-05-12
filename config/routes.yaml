@@ -23,6 +23,10 @@ skill_update:
     path: /admin/skill/{id}/update
     controller: App\Controller\AdminController::skillUpdateAction
 
+skill_delete:
+    path: /admin/skill/{id}/delete
+    controller: App\Controller\AdminController::skillDeleteAction
+
 projects:
     path: /admin/projects
     controller: App\Controller\AdminController::projectAction
@@ -34,6 +38,10 @@ project_add:
 project_update:
     path: /admin/project/{id}/update
     controller: App\Controller\AdminController::projectUpdateAction
+
+project_delete:
+    path: /admin/project/{id}/delete
+    controller: App\Controller\AdminController::projectDeleteAction
 
 technos:
     path: /admin/technos
@@ -47,6 +55,10 @@ techno_update:
     path: /admin/techno/{id}/update
     controller: App\Controller\AdminController::technoUpdateAction
 
+techno_delete:
+    path: /admin/techno/{id}/delete
+    controller: App\Controller\AdminController::technoDeleteAction
+
 categories:
     path: /admin/categories
     controller: App\Controller\AdminController::categoryAction
@@ -59,3 +71,6 @@ category_update:
     path: /admin/category/{id}/update
     controller: App\Controller\AdminController::categoryUpdateAction
 
+category_delete:
+    path: /admin/category/{id}/delete
+    controller: App\Controller\AdminController::categoryDeleteAction
