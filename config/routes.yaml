@@ -75,5 +75,6 @@ category_delete:
     path: /admin/category/{id}/delete
     controller: App\Controller\AdminController::categoryDeleteAction
 
-logout:
-    path: /logout
+register:
+    path: /register
+    controller: App\Controller\RegistrationController::registerAction
