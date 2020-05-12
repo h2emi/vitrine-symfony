@@ -74,3 +74,6 @@ category_update:
 category_delete:
     path: /admin/category/{id}/delete
     controller: App\Controller\AdminController::categoryDeleteAction
+
+logout:
+    path: /logout

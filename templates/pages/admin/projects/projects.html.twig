@@ -12,6 +12,7 @@
             <th scope="col">Nom</th>
             <th scope="col">Description</th>
             <th scope="col">Image</th>
+            <th scope="col">SKill</th>
 
             <th scope="col"></th>
             <th scope="col"></th>
@@ -28,6 +29,9 @@
                 <td>{{ project.description }}</td>
 
                 <td> <img src="{{ asset('uploads/images/'~project.image) }}" style="width: 100px; object-fit: cover;"></td>
+                {% for skill in project.skills %}  <td>{{skill.name}}</td> {% endfor %}
+
+
                 <td><a class="btn btn-primary" href="{{ path('project_update', {"id" : project.id}) }}">Modifier</a></td>
                 <td> <a class="btn btn-primary" href="{{ path('project_delete', {"id" : project.id}) }}">Supprimer</a></td>
             </tr>
